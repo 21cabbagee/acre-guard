@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { 
   CloudRain, Sun, Smartphone, ShieldCheck, ArrowRight, CheckCircle2, 
   AlertTriangle, RefreshCw, Layers, DollarSign, Database, Activity, 
-  MapPin, Radio, ChevronRight, X, PhoneCall
+  MapPin, Radio, ChevronRight, X, PhoneCall, Sparkles, TrendingUp
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import ParticlesCanvas from './components/ParticlesCanvas';
+import OutcomeChart from './components/OutcomeChart';
 
 export default function App() {
   // Simulator State
@@ -115,12 +117,18 @@ export default function App() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative pt-12 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center max-w-4xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-700/80 text-xs text-slate-300">
-            <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
-            ECMWF / CHIRPS Satellite Telemetry ➔ Autonomous M-Pesa Payouts
+      {/* Hero Section with Casberry-style Particles Canvas */}
+      <section className="relative pt-16 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+        {/* Interactive WebGL / Casberry Canvas Simulation */}
+        <ParticlesCanvas color="132, 204, 22" particleCount={50} connectionDistance={120} />
+
+        <div className="relative z-10 text-center max-w-4xl mx-auto space-y-5">
+          {/* Kokonut UI Shimmering Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-lime-500/40 text-xs text-slate-200 shadow-lg shadow-lime-500/10 backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-lime-400 animate-ping"></span>
+            <span className="font-semibold text-lime-300">Live Parametric Climate Engine</span>
+            <span className="text-slate-500">•</span>
+            <span>ECMWF / CHIRPS Satellite Telemetry ➔ Autonomous M-Pesa Payouts</span>
           </div>
 
           {/* EXACT H1 TAG */}
@@ -128,21 +136,27 @@ export default function App() {
             Parametric Agri-Insurance MGA: Instant Climate Payouts for Smallholder Farmers
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-slate-300/90 max-w-2xl mx-auto">
             Zero physical adjusters. Farmers activate $15 drought coverage via seed bag scratch-card USSD. When satellite rainfall drops below thresholds, mobile money claims clear in 48 hours.
           </p>
+
+          {/* Larry Ellison Playbook: Confuse the Tenses & Sell Harder Than You Build */}
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-lime-950/40 border border-lime-500/30 text-xs text-lime-200">
+            <Sparkles className="w-4 h-4 text-lime-400 shrink-0" />
+            <span><strong className="text-white">Service-as-a-Software Parametric MGA:</strong> Zero manual loss adjusters. Claims pay strictly upon satellite threshold breaches.</span>
+          </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <button 
               onClick={() => { setActiveTab('trigger'); triggerSatelliteEvaluation(); }}
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-lime-500 to-emerald-400 text-slate-950 font-bold text-sm hover:from-lime-400 hover:to-emerald-300 transition shadow-xl shadow-lime-500/20 flex items-center gap-2"
+              className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-lime-500 to-emerald-400 text-slate-950 font-bold text-sm hover:from-lime-400 hover:to-emerald-300 transition shadow-xl shadow-lime-500/25 flex items-center gap-2 group cursor-pointer"
             >
-              <Radio className="w-4 h-4 fill-current" />
+              <Radio className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" />
               Simulate Drought Satellite Trigger
             </button>
             <button 
               onClick={() => setActiveTab('ussd')}
-              className="px-6 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-slate-200 font-semibold text-sm hover:bg-slate-800 transition flex items-center gap-2"
+              className="px-6 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-slate-200 font-semibold text-sm hover:bg-slate-800 transition flex items-center gap-2 cursor-pointer backdrop-blur-md"
             >
               <Smartphone className="w-4 h-4" />
               Test Farmer USSD Activation
@@ -150,24 +164,24 @@ export default function App() {
           </div>
 
           <div className="pt-6 grid grid-cols-2 md:grid-cols-4 gap-3 text-left max-w-3xl mx-auto">
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+            <div className="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800/80 text-xs backdrop-blur-md hover:border-lime-500/30 transition">
               <span className="text-slate-400 block">Payout Speed</span>
-              <span className="text-lg font-bold text-lime-400">&lt; 48 Hours</span>
+              <span className="text-xl font-bold text-lime-400">&lt; 48 Hours</span>
               <span className="text-[10px] text-slate-500 block">vs. 6 Months Manual</span>
             </div>
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+            <div className="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800/80 text-xs backdrop-blur-md hover:border-lime-500/30 transition">
               <span className="text-slate-400 block">Intake Channel</span>
-              <span className="text-lg font-bold text-white">USSD / SMS</span>
+              <span className="text-xl font-bold text-white">USSD / SMS</span>
               <span className="text-[10px] text-slate-500 block">Zero Smartphone Needed</span>
             </div>
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+            <div className="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800/80 text-xs backdrop-blur-md hover:border-lime-500/30 transition">
               <span className="text-slate-400 block">Balance-Sheet Risk</span>
-              <span className="text-lg font-bold text-emerald-400">0% Retained</span>
+              <span className="text-xl font-bold text-emerald-400">0% Retained</span>
               <span className="text-[10px] text-slate-500 block">100% Ceded Reinsurance</span>
             </div>
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+            <div className="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800/80 text-xs backdrop-blur-md hover:border-lime-500/30 transition">
               <span className="text-slate-400 block">Disbursement Rail</span>
-              <span className="text-lg font-bold text-lime-300">M-Pesa / MTN</span>
+              <span className="text-xl font-bold text-lime-300">M-Pesa / MTN</span>
               <span className="text-[10px] text-slate-500 block">Direct Mobile Money</span>
             </div>
           </div>
@@ -176,6 +190,15 @@ export default function App() {
 
       {/* Main Interactive Workspaces */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        {/* Sequoia Framework Outcome Visualizer (Bklit UI + Julien Bek $1 vs $6 Ratio) */}
+        <div className="mb-12">
+          <OutcomeChart 
+            serviceName="Smallholder Crop Protection & Parametric Claims"
+            defaultInsuredAcres={25000}
+            onCtaClick={() => setCabModalOpen(true)}
+          />
+        </div>
+
         {/* Navigation Tabs */}
         <div className="flex border-b border-slate-800 mb-8 overflow-x-auto">
           <button 
